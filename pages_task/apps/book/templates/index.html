@@ -10,17 +10,21 @@
 <body>
 <h1 class="text-center">hello cruel world</h1>
 <div class="container">
-{%get_note notes id=2 %}
-    <!---->
-<!--{% for item in notes %}-->
-<!--<div class="row">-->
+    <div class="text-center">
 
-    <!--<div class="span5"><h2>{{item.note_name}}</h2>-->
-        <!--<h3>{{item.note_value}}</h3>-->
-    <!--</div>-->
-    <!--</div>-->
-<!--{% endfor %}-->
-<!--</div>-->
+        <h3>Custom tag example:</h3>
+        {%get_note notes id=2 %}
+    </div>
+    
+{% for item in notes %}
+<div class="row">
+
+    <div class="span5"><h2>{{item.note_name}}</h2>
+        <h3>{{item.note_value}}</h3>
+    </div>
+    </div>
+{% endfor %}
+</div>
 
 </body>
 </html>
