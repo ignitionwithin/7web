@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>List task</title>
+    <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<h1 class="text-center">hello cruel world</h1>
+<div class="container">
+{% for item in notes %}
+<div class="row">
+    <div class=="span5"><h2>{{item.note_name}}</h2>
+        <h3>{{item.note_value}}</h3>
+    </div>
+    </div>
+{% endfor %}
+    </div>
+</body>
+</html>
