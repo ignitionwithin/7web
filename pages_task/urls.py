@@ -14,5 +14,5 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-	url(r'^$',include('pages_task.apps.book.urls',namespace='book'))
+	url(r'^book/',include('pages_task.apps.book.urls',namespace='book'))
 )

@@ -15,15 +15,18 @@
         <h3>Custom tag example:</h3>
         {%get_note notes id=2 %}
     </div>
-    
+
 {% for item in notes %}
 <div class="row">
 
-    <div class="span5"><h2>{{item.note_name}}</h2>
+    <div class="span8"><h2>{{item.note_name}}</h2>
         <h3>{{item.note_value}}</h3>
     </div>
     </div>
 {% endfor %}
+    <form action="create_note/">
+        <button class="btn btn-success">Add new note</button>
+    </form>
 </div>
 
 </body>
