@@ -4,12 +4,15 @@
 </title>
     <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
 <body>
+
 <div class="text-center">
+
 <form action="" method="post">
            {{ form.as_p }}
     {% csrf_token %}
     <button>Add note.</button>
 </form>
+
 </div>
 </body>
 
