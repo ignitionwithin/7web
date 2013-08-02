@@ -4,12 +4,28 @@
 </title>
     <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
 <body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <div class="text-center">
-<form action="" method="post">
+     <div>
+    <h4>Total notes amount is : {{notes_amount}}</h4>
+</div>
+<form enctype="multipart/form-data" id='main_form' action="" method="post">
            {{ form.as_p }}
     {% csrf_token %}
-    <button>Add note.</button>
+    <p id='counter'>Total characters: <span id='count_value'></span></p>
+    <button name='add_note' class='btn btn-success'>Add note.</button>
 </form>
+
+    <script type="text/javascript">
+$('#id_note_value').keyup(function(){
+        var val=document.getElementsByName('note_value')[0].value;
+        var lent = val.length
+
+            $('#count_value').text(lent);
+
+});
+
+    </script>
 </div>
 </body>
 
