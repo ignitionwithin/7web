@@ -3,11 +3,11 @@
 <head>
     {% load static %}
     {% load render_tag %}
-
     <title>List task</title>
     <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
+{{MEDIA_ROOT}}
 <h1 class="text-center">hello cruel world</h1>
 <div class="container">
     <div>
@@ -24,6 +24,7 @@
 
     <div class="span8"><h2>{{item.note_name}}</h2>
         <h3>{{item.note_value}}</h3>
+        {% if item.note_image %}<img src="{{ item.note_image.url }}">{%endif%}
     </div>
     </div>
 {% endfor %}

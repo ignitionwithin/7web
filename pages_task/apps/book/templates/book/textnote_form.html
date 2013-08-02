@@ -9,7 +9,7 @@
      <div>
     <h4>Total notes amount is : {{notes_amount}}</h4>
 </div>
-<form id='main_form' action="" method="post">
+<form enctype="multipart/form-data" id='main_form' action="" method="post">
            {{ form.as_p }}
     {% csrf_token %}
     <p id='counter'>Total characters: <span id='count_value'></span></p>
