@@ -119,6 +119,7 @@ ROOT_URLCONF = 'pages_task.urls'
 WSGI_APPLICATION = 'pages_task.wsgi.application'
 
 TEMPLATE_DIRS = ('pages_task/templates',
+				 'pages_task/apps/book/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

@@ -1,16 +1,29 @@
 from django_webtest import WebTest
 from django.contrib.auth.models import User
-from models import TextNote
+from models import TextNote, Book
 
 class MyTestCase(WebTest):
 
 	def setUp(self):
 	#Users:
-		self.user_1 = User.objects.create_user('Chevy Chase', 'chevy@chase.com', 'chevyspassword')
-		self.user_2 = User.objects.create_user('Jim Carrey', 'jim@carrey.com', 'jimspassword')
+		self.user_1 = User.objects.create_user(
+			'Chevy Chase', 'chevy@chase.com', 'chevyspassword'
+		)
+		self.user_2 = User.objects.create_user(
+			'Jim Carrey', 'jim@carrey.com', 'jimspassword'
+		)
 	#Notes:
-		self.note_1 = TextNote.objects.create(note_name='First', note_value='THIS is My Ten Chars',note_image='ss.aa')
-		self.note_2 = TextNote.objects.create(note_name='Second', note_value='THIS is My Ten Chars',note_image='ss.aa')
+		self.note_1 = TextNote.objects.create(
+			note_name='First', note_value='THIS is My Ten Chars',
+			note_image='ss.aa'
+		)
+		self.note_2 = TextNote.objects.create(
+			note_name='Second', note_value='THIS is My Ten Chars',
+			note_image='ss.aa'
+		)
+		self.book_1 = Book.objects.create(
+			book_name = 'Test book'
+		)
 
 	def test_greeting_page(self):
 		greeting = self.app.get('/')
@@ -57,5 +70,9 @@ class MyTestCase(WebTest):
 	def test_uploaded_img_exists(self):
 		index_page_resp = self.app.get('/book/').html
 		img_path=index_page_resp.img['src']
-		print img_path
 		assert str(self.note_1.note_image) in img_path
+
+	def test_book_checkbox_exists(self):
+		resp = self.app.get('/book/create_note/')
+		assert self.book_1.book_name in resp.content
+
