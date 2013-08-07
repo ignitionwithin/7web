@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 	'pages_task.apps.book',
 	'webtest',
+	'ajax_upload',
 	#'django_dynamic_fixture ',
 )
 
