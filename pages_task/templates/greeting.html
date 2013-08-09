@@ -4,10 +4,27 @@
     <title>Wellcome!</title>
 </head>
 <body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
 <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
     <div class="container" >
         <h2>Hi!</h2>
         <h3>Here is my <a href="/book">app</a></h3>
+
+        <div id = 'widget'><script type="text/javascript">
+    $('#widget').load('http://192.168.137.101:8080/book/widget')
+            </script>
+            </div>
     </div>
+<!--This code you could copy to your site :-->
+<!--######################-->
+<!--######################-->
+<!--######################-->
+
+<!--######################-->
+<!--######################-->
+<!--######################-->
+
+
 </body>
 </html>
