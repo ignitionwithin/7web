@@ -3,14 +3,14 @@ from models import TextNote
 from ajax_upload.widgets import AjaxClearableFileInput
 
 class AddNoteForm(forms.ModelForm):
-	note_value=forms.CharField(
+	value=forms.CharField(
 		min_length=10,
 		widget=forms.Textarea(attrs={'cols': 60, 'rows': 20}))
 
-	note_image = forms.ImageField(widget=AjaxClearableFileInput())
+	image = forms.ImageField(widget=AjaxClearableFileInput())
 	class Meta:
 		model = TextNote
-		fields = ['note_name','note_value','note_image','note_book']
+		fields = ['name','value','image','book']
 
 	class Media:
 		js = ('//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js',

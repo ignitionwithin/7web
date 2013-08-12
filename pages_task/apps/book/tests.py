@@ -45,8 +45,8 @@ class MyTestCase(WebTest):
 		resp = self.app.get('/book/create_note/')
 		forms= resp.forms
 		main_form=forms['main_form']
-		main_form['note_name'].value='some te4xt'
-		main_form['note_value'].value = 'NineChars'
+		main_form['name'].value='some te4xt'
+		main_form['value'].value = 'NineChars'
 		res=main_form.submit()
 		assert 'Ensure this value has at least 10 characters' in res
 
@@ -54,8 +54,8 @@ class MyTestCase(WebTest):
 		resp = self.app.get('/book/create_note/')
 		forms= resp.forms
 		main_form=forms['main_form']
-		main_form['note_name'].value='some text'
-		main_form['note_value'].value = 'My ten Chars'
+		main_form['name'].value='some text'
+		main_form['value'].value = 'My ten Chars'
 		res=main_form.submit('Add note')
 		assert '200 OK' == res.status
 
@@ -85,4 +85,4 @@ class MyTestCase(WebTest):
 		page = self.app.get('/book/')
 		db_objects = TextNote.objects.all()
 		obj = db_objects[0]
-		assert obj.note_name in page
+		assert obj.name in page

@@ -22,9 +22,9 @@
 {% for item in notes %}
 <div class="row">
 
-    <div class="span8"><h2>{{item.note_name}}</h2>
-        <h3>{{item.note_value}}</h3>
-        {% if item.note_image %}<img src="{{ item.note_image.url }}">{%endif%}
+    <div class="span8"><h2>{{item.name}}</h2>
+        <h3>{{item.value}}</h3>
+        {% if item.image %}<img src="{{ item.image.url }}">{%endif%}
     </div>
     </div>
 {% endfor %}
