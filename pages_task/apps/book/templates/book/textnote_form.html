@@ -4,10 +4,8 @@
 </title>
     <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
 
-
 <body>
 
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
 <div class="text-center">
      <div>
     <h4>Total notes amount is : {{notes_amount}}</h4>
@@ -18,13 +16,12 @@
     {% csrf_token %}
 
     <button name='add_note' class='btn btn-success'>Add note.</button>
+
+
 </form>
 
  </div>
-</body>
-<link href="{{ STATIC_URL }}ajax_upload/css/ajax-upload-widget.css" rel="stylesheet" type="text/css"/>
-<script src="{{ STATIC_URL }}ajax_upload/js/jquery.iframe-transport.js"></script>
-<script src="{{ STATIC_URL }}ajax_upload/js/ajax-upload-widget.js"></script>
+
 
 
 <script>
@@ -32,4 +29,6 @@
         AjaxUploadWidget.autoDiscover();
     });
 </script>
+
+</body>
 </html>
