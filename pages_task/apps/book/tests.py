@@ -4,26 +4,27 @@ from models import TextNote, Book
 
 class MyTestCase(WebTest):
 
-	def setUp(self):
-	#Users:
-		self.user_1 = User.objects.create_user(
-			'Chevy Chase', 'chevy@chase.com', 'chevyspassword'
-		)
-		self.user_2 = User.objects.create_user(
-			'Jim Carrey', 'jim@carrey.com', 'jimspassword'
-		)
-	#Notes:
-		self.note_1 = TextNote.objects.create(
-			note_name='First', note_value='THIS is My Ten Chars',
-			note_image='ss.aa'
-		)
-		self.note_2 = TextNote.objects.create(
-			note_name='Second', note_value='THIS is My Ten Chars',
-			note_image='ss.aa'
-		)
-		self.book_1 = Book.objects.create(
-			book_name = 'Test book'
-		)
+	fixtures = ['fixture.json',]
+	# def setUp(self):
+	# #Users:
+	# 	self.user_1 = User.objects.create_user(
+	# 		'Chevy Chase', 'chevy@chase.com', 'chevyspassword'
+	# 	)
+	# 	self.user_2 = User.objects.create_user(
+	# 		'Jim Carrey', 'jim@carrey.com', 'jimspassword'
+	# 	)
+	# #Notes:
+	# 	self.note_1 = TextNote.objects.create(
+	# 		note_name='First', note_value='THIS is My Ten Chars',
+	# 		note_image='ss.aa'
+	# 	)
+	# 	self.note_2 = TextNote.objects.create(
+	# 		note_name='Second', note_value='THIS is My Ten Chars',
+	# 		note_image='ss.aa'
+	# 	)
+	# 	self.book_1 = Book.objects.create(
+	# 		book_name = 'Test book'
+	# 	)
 
 	def test_greeting_page(self):
 		greeting = self.app.get('/')
@@ -35,7 +36,7 @@ class MyTestCase(WebTest):
 
 	def test_add_note_exists(self):
 		resp = self.app.get('/')
-		next_step = self.app.get((resp.click('app').location))
+		next_step = self.app.get(resp.click('app').location)
 		form=next_step.forms['add_new_note']
 		assert form.submit()
 		assert form.submit().status == '200 OK'
@@ -56,7 +57,7 @@ class MyTestCase(WebTest):
 		main_form['note_name'].value='some text'
 		main_form['note_value'].value = 'My ten Chars'
 		res=main_form.submit('Add note')
-		assert '302 FOUND' == res.status
+		assert '200 OK' == res.status
 
 	def test_custom_template_tag_exists(self):
 		index_page_resp  = self.app.get('/book/')
@@ -66,13 +67,22 @@ class MyTestCase(WebTest):
 		assert value_1 == value_2
 		assert int(value_2[-1]) and int(value_1[-1])
 
+	#	This tests don't needed with ajax image loading implimentation
+	#
+	# def test_uploaded_img_exists(self):
+	# 	index_page_resp = self.app.get('/book/').html
+	# 	img_path=index_page_resp.img['src']
+	# 	assert str(TextNote.note_image) in img_path
+	#
+	# def test_book_checkbox_exists(self):
+	# 	resp = self.app.get('/book/create_note/')
+	# 	obj = TextNote.objects.get(pk=1)
+	# 	img_path = obj.note_image
+	# 	print(str(img_path))
+	# 	assert img_path in resp.content
 
-	def test_uploaded_img_exists(self):
-		index_page_resp = self.app.get('/book/').html
-		img_path=index_page_resp.img['src']
-		assert str(self.note_1.note_image) in img_path
-
-	def test_book_checkbox_exists(self):
-		resp = self.app.get('/book/create_note/')
-		assert self.book_1.book_name in resp.content
-
+	def test_objects_on_list_page(self):
+		page = self.app.get('/book/')
+		db_objects = TextNote.objects.all()
+		obj = db_objects[0]
+		assert obj.note_name in page
