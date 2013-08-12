@@ -8,4 +8,4 @@ def get_note(obj,id):
 			return '''<div>
 			<h2>{0}</h2>
 			<h3>{1}</h3>
-			</div>'''.format(i,i.note_value)
+			</div>'''.format(i,i.value)

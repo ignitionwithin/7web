@@ -4,20 +4,20 @@ from models import *
 from forms import AddNoteForm
 from django.http import HttpResponse
 
-class Notes_list(ListView):
+class NotesList(ListView):
 
 	model = TextNote
 	context_object_name = 'notes'
 	template_name = 'index.html'
 
 
-class Add_note(CreateView):
+class AddNote(CreateView):
 
 	model = TextNote
 	form_class = AddNoteForm
 	success_url = '/book/'
 
-class Portable_widget(View):
+class PortableWidget(View):
 
 	model = TextNote
 
@@ -32,4 +32,4 @@ class Portable_widget(View):
 		  style='width:300px;height:200px;padding:auto;'>
 		  <b>Random Note</b>  : <p>{}</p> <p>{}</p>
 		  		  </div>'''
-		.format(object.note_name, object.note_value))
+		.format(object.name, object.value))
