@@ -3,6 +3,9 @@ register = template.Library()
 
 @register.simple_tag(name='get_note')
 def get_note(obj,id):
+	"""
+	This function create custom tag
+	"""
 	for i in obj:
 		if i.pk == id:
 			return '''<div>

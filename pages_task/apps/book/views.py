@@ -5,6 +5,9 @@ from forms import AddNoteForm
 from django.http import HttpResponse
 
 class NotesList(ListView):
+	"""
+	This class render TextNotes list
+	"""
 
 	model = TextNote
 	context_object_name = 'notes'
@@ -12,17 +15,28 @@ class NotesList(ListView):
 
 
 class AddNote(CreateView):
-
+	"""
+	This class provides ability	to create new
+	instance of TextNote.
+	If creation is successfully - redirect to
+	list of notes
+	"""
 	model = TextNote
 	form_class = AddNoteForm
 	success_url = '/book/'
 
 class PortableWidget(View):
-
+	"""
+	This class get random instance of TextNote
+	from db and returns some formated html for
+	widget render
+	"""
 	model = TextNote
 
 	def get(self,request):
-
+		"""
+		This function get random record
+		"""
 		try:
 			object = self.model.objects.order_by('?')[0]
 		except IndexError:
