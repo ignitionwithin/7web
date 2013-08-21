@@ -1,6 +1,6 @@
 from django_webtest import WebTest
 from models import TextNote
-
+from django.core.urlresolvers import reverse
 
 class ImplementationTest(WebTest):
     """ Test primary project functional	"""
@@ -8,18 +8,18 @@ class ImplementationTest(WebTest):
 
     def test_greeting_page(self):
         """ Test root page exists  """
-        greeting = self.app.get('/')
+        greeting = self.app.get(reverse('home'))
         assert 'Here is my ' in greeting
 
     def test_notes_page_exist(self):
         """ This function tests, that pages with notes exists """
-        resp = self.app.get('/')
+        resp = self.app.get(reverse('home'))
         book_page = self.app.get(resp.click('app').location)
         assert '200 OK' == book_page.status
 
     def test_add_note_exists(self):
         """ This function covers ability to go on note's create page  """
-        resp = self.app.get('/')
+        resp = self.app.get(reverse('home'))
         next_step = self.app.get(resp.click('app').location)
         form = next_step.forms['add_new_note']
         assert form.submit()
@@ -27,7 +27,7 @@ class ImplementationTest(WebTest):
 
     def test_add_note_form_min_char_limit(self):
         """ This function test minimum 10 chars condition """
-        resp = self.app.get('/')
+        resp = self.app.get(reverse('home'))
         book_page = self.app.get(resp.click('app').location)
         add_new_note_button= book_page.form
         create_page = add_new_note_button.submit()
@@ -42,7 +42,7 @@ class ImplementationTest(WebTest):
         """
         This function tests ability to create note
         """
-        resp = self.app.get('/')
+        resp = self.app.get(reverse('home'))
         book_page = self.app.get(resp.click('app').location)
         add_new_note_button= book_page.form
         create_page = add_new_note_button.submit()
@@ -58,7 +58,7 @@ class ImplementationTest(WebTest):
         Test , that required custom template tag exists,
         and show valid information
         """
-        resp = self.app.get('/')
+        resp = self.app.get(reverse('home'))
         book_page = self.app.get(resp.click('app').location)
         add_new_note_button= book_page.form
         create_page = add_new_note_button.submit()
@@ -72,7 +72,7 @@ class ImplementationTest(WebTest):
         This function tests - ability to show valid
         notes list on note's list page
         """
-        resp = self.app.get('/')
+        resp = self.app.get(reverse('home'))
         book_page = self.app.get(resp.click('app').location)
         db_objects = TextNote.objects.all()
         for i in db_objects:
