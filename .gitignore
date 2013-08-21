@@ -1,4 +1,6 @@
+#this file describes witch folders and file extensions must be ignored by git
 *.pyc
+*.db
 bin/
 include/
 local/

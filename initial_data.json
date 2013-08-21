@@ -1,0 +1,55 @@
+[
+    {
+        "model":"book.TextNote",
+        "pk":1,
+        "fields":{
+            "name":"First record",
+            "value":"This is test first record",
+            "image":"./74ba373306f64a3aa865460827ad8e06-images.jpg",
+            "book":[1]
+
+        }
+    },
+    {
+        "model":"book.TextNote",
+        "pk":2,
+        "fields":{
+            "name":"Second record",
+            "value":"This is test second record",
+            "image":"./0f1b2b96962d4d619a6210d6b47e7be1-3.png",
+            "book":[2]
+
+        }
+    },
+    {
+        "model":"book.TextNote",
+        "pk":3,
+        "fields":{
+            "name":"Third record",
+            "value":"This is test third record",
+            "image":"./1a12ab4e6bd44d3090b6974ef16b57f6-python-logo-master-v3-TM.png",
+            "book":[1,2]
+
+        }
+    },
+    {
+        "model":"book.Book",
+        "pk":1,
+        "fields":{
+            "name":"Red book"
+
+
+        }
+    },
+     {
+        "model":"book.Book",
+        "pk":2,
+        "fields":{
+            "name":"Yellow book"
+
+
+        }
+    }
+
+
+]

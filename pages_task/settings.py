@@ -12,13 +12,13 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '~/task.db',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'task.db',
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -51,7 +51,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT,'media')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
@@ -71,7 +71,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-	os.path.join(PROJECT_ROOT,'apps/book/static'),
+    os.path.join(PROJECT_ROOT, 'apps/book/static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -82,7 +82,6 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -92,7 +91,6 @@ SECRET_KEY = 'u$k$xogskorho!h72oom2b)uy8x^=zvtoqf6j1b9k4(y26$qv9'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
@@ -101,7 +99,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
-	"pages_task.context_processors.notes_amount",)
+    "pages_task.context_processors.notes_amount",)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -118,11 +116,9 @@ ROOT_URLCONF = 'pages_task.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'pages_task.wsgi.application'
 
-TEMPLATE_DIRS = ('pages_task/templates',
-				 'pages_task/apps/book/templates',
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+TEMPLATE_DIRS = (
+    'pages_task/templates',
+    'pages_task/apps/book/templates',
 )
 
 INSTALLED_APPS = (
@@ -136,10 +132,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-	'pages_task.apps.book',
-	'webtest',
-	'ajax_upload',
-	#'django_dynamic_fixture ',
+    'pages_task.apps.book',
+    'webtest',
+    'ajax_upload',
+    #'django_dynamic_fixture ',
 )
 
 # A sample logging configuration. The only tangible logging

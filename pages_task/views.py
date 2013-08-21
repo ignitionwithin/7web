@@ -1,4 +1,8 @@
 from django.views.generic import TemplateView
 
+
 class Greeting(TemplateView):
-	template_name = 'greeting.html'
+    """
+    Select html template for greeting page
+    """
+    template_name = 'greeting.html'
