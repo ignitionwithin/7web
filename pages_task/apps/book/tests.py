@@ -27,8 +27,11 @@ class ImplementationTest(WebTest):
 
     def test_add_note_form_min_char_limit(self):
         """ This function test minimum 10 chars condition """
-        resp = self.app.get('/book/create_note/')
-        forms = resp.forms
+        resp = self.app.get('/')
+        book_page = self.app.get(resp.click('app').location)
+        add_new_note_button= book_page.form
+        create_page = add_new_note_button.submit()
+        forms = create_page.forms
         main_form = forms['main_form']
         main_form['name'].value = 'some te4xt'
         main_form['value'].value = 'NineChars'
@@ -39,8 +42,11 @@ class ImplementationTest(WebTest):
         """
         This function tests ability to create note
         """
-        resp = self.app.get('/book/create_note/')
-        forms = resp.forms
+        resp = self.app.get('/')
+        book_page = self.app.get(resp.click('app').location)
+        add_new_note_button= book_page.form
+        create_page = add_new_note_button.submit()
+        forms = create_page.forms
         main_form = forms['main_form']
         main_form['name'].value = 'some text'
         main_form['value'].value = 'My ten Chars'
@@ -52,10 +58,12 @@ class ImplementationTest(WebTest):
         Test , that required custom template tag exists,
         and show valid information
         """
-        index_page_resp = self.app.get('/book/')
-        create_page_resp = self.app.get('/book/create_note/')
-        value_1 = str(index_page_resp.html.h4).strip('<h4>').strip('</h4>')
-        value_2 = str(create_page_resp.html.h4).strip('<h4>').strip('</h4>')
+        resp = self.app.get('/')
+        book_page = self.app.get(resp.click('app').location)
+        add_new_note_button= book_page.form
+        create_page = add_new_note_button.submit()
+        value_1 = str(book_page.html.h4).strip('<h4>').strip('</h4>')
+        value_2 = str(create_page.html.h4).strip('<h4>').strip('</h4>')
         assert value_1 == value_2
         assert int(value_2[-1]) and int(value_1[-1])
 
