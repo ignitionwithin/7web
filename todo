@@ -1,0 +1,26 @@
+* Create custom Widget that extends Textarea widget 
+    and shows dynamically amount of symbols are writed in this field.
+    Use this widget at form of creating new note and at admin interface(at note adding).
+    Note: there are can be a few such widgets at one page.
+
+* Add ability to attach an image to Note
+
+* Show total count of notes. Use custom context processor to pass amount to every template.
+
+* Add ability to add new text note. Do not allow to post note shorter that 10 symbols.
+
+* Create a custom inclusion template tag that will render one text note by given id of note.
+
+* Create 'book' model to store notes. Every note can occur in multiple books.
+
+* Change form to Use Ajax to create new text note. 
+    Note: all CSS and JS instructions should be in separate files, not in the HTML code.
+
+* Add a widget that can be inserted in any web page. Widget should show random text note. 
+    There should be a ability to generate HTML code of widget that can be inserted in another site.
+    Note: do not bother yourself with checking that jquery is enabled at site. Assume that jquery is enabled.
+
+* Create app that shows list of text notes.
+    It is should be one page that show list of text notes. 
+    At this moment notes can be added from django admin interface without any additional interface.
+    Don't bother yourself with complex ui, let's use basic twitter bootstrap skeleton and styles.
